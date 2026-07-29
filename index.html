@@ -361,32 +361,52 @@
         /* Certifications */
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
         .cert-card {
             background: #fff;
             border-radius: 14px;
-            padding: 36px 24px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: var(--shadow);
             transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
         }
         .cert-card:hover { transform: translateY(-2px); }
-        .cert-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
+        .cert-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: top center;
+            border-bottom: 1px solid var(--sand);
         }
-        .cert-card h4 {
+        .cert-body {
+            padding: 20px 20px 24px;
+            text-align: center;
+        }
+        .cert-body h4 {
             font-size: 15px;
             color: var(--dark-brown);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             font-weight: 600;
         }
-        .cert-card p {
-            font-size: 13px;
+        .cert-body .cert-model {
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .cert-body .cert-date {
+            font-size: 11px;
             color: var(--text-light);
-            line-height: 1.6;
+        }
+        .cert-body .cert-dl {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--accent);
+            border-bottom: 1px dashed var(--accent);
         }
 
         /* Inquiry */
@@ -757,30 +777,45 @@
             <div class="section-divider"></div>
         </div>
         <div class="certs-grid">
-            <div class="cert-card">
-                <div class="cert-icon">✅</div>
-                <h4>RoHS</h4>
-                <p>
-                    <span class="en">Restriction of Hazardous Substances — compliant with EU standards. No lead, mercury, cadmium, or other restricted materials in any component.</span>
-                    <span class="zh">有害物质限制指令——符合欧盟标准，所有部件不含铅、汞、镉等受限物质。</span>
-                </p>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">✅</div>
-                <h4>CE</h4>
-                <p>
-                    <span class="en">Conformité Européenne marking — meets EU health, safety, and environmental requirements for products sold in the European Economic Area.</span>
-                    <span class="zh">欧盟 CE 认证——符合欧洲经济区健康、安全和环保要求。</span>
-                </p>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">✅</div>
-                <h4>ISO 9001</h4>
-                <p>
-                    <span class="en">Quality management system certified — standardized production processes and continuous improvement commitment.</span>
-                    <span class="zh">质量管理体系认证——标准化生产流程，持续改进承诺。</span>
-                </p>
-            </div>
+            <a class="cert-card" href="cert-rohs-ms3007.pdf" target="_blank" download>
+                <img src="cert-rohs-ms3007.jpg" alt="RoHS Certificate MS3007">
+                <div class="cert-body">
+                    <h4>RoHS</h4>
+                    <div class="cert-model">Model: MS3007 / M2507578XY-C0240</div>
+                    <div class="cert-date">Issued: Mar. 26, 2026</div>
+                    <div class="cert-dl">
+                        <span class="en">Download PDF</span>
+                        <span class="zh">下载证书</span>
+                    </div>
+                </div>
+            </a>
+            <a class="cert-card" href="cert-rohs-ms3039.pdf" target="_blank" download>
+                <img src="cert-rohs-ms3039.jpg" alt="RoHS Certificate MS3039">
+                <div class="cert-body">
+                    <h4>RoHS</h4>
+                    <div class="cert-model">Model: MS3039 / M2507573XY-C0434-C1</div>
+                    <div class="cert-date">Issued: Sep. 19, 2025</div>
+                    <div class="cert-dl">
+                        <span class="en">Download PDF</span>
+                        <span class="zh">下载证书</span>
+                    </div>
+                </div>
+            </a>
+            <a class="cert-card" href="cert-iso9001.pdf" target="_blank" download>
+                <img src="cert-iso9001.jpg" alt="ISO 9001 Certificate">
+                <div class="cert-body">
+                    <h4>ISO 9001</h4>
+                    <div class="cert-model">佛山市叶轩家具制造有限公司</div>
+                    <div class="cert-date">
+                        <span class="en">Quality Management System</span>
+                        <span class="zh">质量管理体系认证</span>
+                    </div>
+                    <div class="cert-dl">
+                        <span class="en">Download PDF</span>
+                        <span class="zh">下载证书</span>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 </section>
