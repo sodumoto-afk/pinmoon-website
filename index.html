@@ -1064,6 +1064,7 @@
                         <label>
                             <span class="en">Email</span>
                             <span class="zh">邮箱</span>
+                            <span style="font-size:11px;color:var(--text-light);"><span class="en"> (Required if no WhatsApp)</span><span class="zh"> (无微信/WhatsApp则必填)</span></span>
                         </label>
                         <input type="email" name="email">
                     </div>
@@ -1178,6 +1179,9 @@ if(hp&&hp.value.trim()!==''){alert(lang==='en'?'Invalid submission.':'提交无�
 if(now-formOpened<3000){alert(lang==='en'?'Please take your time.':'请稍后再提交。');return;}
 if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another message.':'请等待后再发送新消息。');return;}
 if(submitCount>=5){alert(lang==='en'?'Too many messages. Please email us directly.':'发送次数过多，请直接邮件联系我们。');return;}
+var wa=form.querySelector('[name=whatsapp]').value.trim();
+var em=form.querySelector('[name=email]').value.trim();
+if(!wa&&!em){alert(lang==='en'?'Please fill in WhatsApp/WeChat or Email.':'请填写 WhatsApp/微信 或 邮箱。');return;}
 var btn=document.getElementById('submitBtn');
 var orig=btn.textContent;
 btn.textContent=lang==='en'?'Sending...':'发送中...';

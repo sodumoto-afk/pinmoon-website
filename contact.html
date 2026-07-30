@@ -61,7 +61,7 @@
                     <div class="form-group"><label><span class="en">Your Name *</span><span class="zh">您的姓名 *</span></label><input type="text" name="name" required></div>
                     <div class="form-group"><label style="color:var(--accent);font-weight:600;"><span class="en">WhatsApp / WeChat</span><span class="zh">WhatsApp / 微信</span> <span style="font-size:11px;font-weight:400;"><span class="en">(Preferred)</span><span class="zh">(推荐)</span></span></label><input type="text" name="whatsapp" placeholder="e.g. +86 138xxxxxxx or WeChat ID"></div>
                     <div class="form-group"><label><span class="en">Company Name</span><span class="zh">公司名称</span></label><input type="text" name="company"></div>
-                    <div class="form-group"><label><span class="en">Email</span><span class="zh">邮箱</span></label><input type="email" name="email"></div>
+                    <div class="form-group"><label><span class="en">Email</span><span class="zh">邮箱</span> <span style="font-size:11px;color:var(--text-light);"><span class="en">(Required if no WhatsApp)</span><span class="zh">(无微信/WhatsApp则必填)</span></span></label><input type="email" name="email"></div>
                     <div class="form-group"><label><span class="en">Product Interest</span><span class="zh">感兴趣的产品</span></label>
                         <select name="product"><option value=""><span class="en">-- Select --</span><span class="zh">-- 请选择 --</span></option><option>RP-HP200 (Hotel Pocket)</option><option>BP-BB180 (Bonnell B&B)</option><option>ODM-FA220 (Foldable Apartment)</option><option><span class="en">Custom OEM/ODM</span><span class="zh">定制 OEM/ODM</span></option></select></div>
                     <div class="form-group"><label><span class="en">Estimated Order Quantity</span><span class="zh">预计订单量</span></label><input type="text" name="quantity" placeholder="e.g. 1x40HQ container"></div>
@@ -146,6 +146,9 @@ if(now-formOpened<3000){alert(lang==='en'?'Please take your time.':'请稍后再
 if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another message.':'请等待后再发送新消息。');return;}
 // Check 4: max 5 per session
 if(submitCount>=5){alert(lang==='en'?'Too many submissions. Please email us directly.':'提交次数过多，请直接邮件联系我们。');return;}
+var wa=form.querySelector('[name=whatsapp]').value.trim();
+var em=form.querySelector('[name=email]').value.trim();
+if(!wa&&!em){alert(lang==='en'?'Please fill in WhatsApp/WeChat or Email.':'请填写 WhatsApp/微信 或 邮箱。');return;}
 var btn=document.getElementById('submitBtn');
 var orig=btn.textContent;
 btn.textContent=lang==='en'?'Sending...':'发送中...';
