@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Contact Pinmoon | Mattress OEM Inquiry | Bulk Order Quote</title>
+<title>Contact Pinmoon | Mattress OEM | Bulk Order Quote</title>
 <meta name="description" content="Contact Pinmoon mattress factory for bulk OEM orders. Email sodumoto@gmail.com, WhatsApp +86 13088813138. Foshan, Guangdong, China. Hotel, B&B, school, villa mattress supplier.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.pinmoonmattress.com/contact">
@@ -21,7 +21,7 @@
             <li><a href="products.html"><span class="en">Products</span><span class="zh">产品</span></a></li>
             <li><a href="factory.html"><span class="en">Factory</span><span class="zh">工厂</span></a></li>
             <li><a href="certifications.html"><span class="en">Certifications</span><span class="zh">资质</span></a></li>
-            <li><a href="contact.html" class="active"><span class="en">Inquiry</span><span class="zh">询盘</span></a></li>
+            <li><a href="contact.html" class="active"><span class="en">Contact Us</span><span class="zh">联系我们</span></a></li>
             <li><button class="lang-switch" id="langToggle" onclick="toggleLang()">中文</button></li>
         </ul>
         <button class="mobile-toggle" onclick="toggleMenu()">&#9776;</button>
@@ -43,7 +43,7 @@
                 <p><span class="en">Reach us directly for bulk orders, custom OEM projects, or factory visits.</span><span class="zh">直接联系我们咨询批量订单、定制 OEM 项目或工厂参观。</span></p>
                 <div class="inquiry-detail"><div class="icon">*</div><div class="info"><strong><span class="en">Address</span><span class="zh">地址</span></strong><span class="en">No.4 Zhenye East 1st Road, Shatou Industrial Park, Jiujiang Town, Nanhai District, Foshan, Guangdong, China</span><span class="zh">广东省佛山市南海区九江镇沙头工业园振业东一路4号首层之一</span></div></div>
                 <div id="contactLock" style="text-align:center;padding:18px 20px;background:var(--cream);border-radius:12px;margin-top:20px;">
-                    <p style="font-size:14px;color:var(--text-light);margin:0;"><span class="en">Send an inquiry to view email & WhatsApp</span><span class="zh">发送询盘后显示邮箱与 WhatsApp</span></p>
+                    <p style="font-size:14px;color:var(--text-light);margin:0;"><span class="en">Contact us to view email & WhatsApp</span><span class="zh">联系我们后显示邮箱与 WhatsApp</span></p>
                 </div>
                 <div id="contactReveal" style="display:none;">
                     <div class="inquiry-detail"><div class="icon">*</div><div class="info"><strong>Email</strong><span>sodumoto@gmail.com</span></div></div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="inquiry-form">
-                <h3><span class="en">Send an Inquiry</span><span class="zh">发送询盘</span></h3>
+                <h3><span class="en">Send a Message</span><span class="zh">发送消息</span></h3>
                  <form id="inquiryForm">
                     <!-- Honeypot: hidden field -->
                     <div style="position:absolute;left:-9999px;" aria-hidden="true">
@@ -71,7 +71,7 @@
                         <span class="en"> Your information is 100% confidential and will never be shared.</span>
                         <span class="zh"> 您的信息完全保密，不会泄露给第三方。</span>
                     </p>
-                    <button type="submit" class="form-submit" id="submitBtn"><span class="en">Send Inquiry</span><span class="zh">发送询盘</span></button>
+                    <button type="submit" class="form-submit" id="submitBtn"><span class="en">Send Message</span><span class="zh">发送消息</span></button>
                 </form>
             </div>
         </div>
@@ -111,7 +111,7 @@
                 <span class="en">Contact</span>
                 <span class="zh">联系</span>
             </h4>
-            <p style="font-size:12px;color:rgba(255,255,255,0.35);"><span class="en">Submit inquiry to view</span><span class="zh">提交询盘后显示</span></p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);"><span class="en">Contact us to view</span><span class="zh">联系我们后显示</span></p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -143,7 +143,7 @@ if(hp&&hp.value.trim()!==''){alert(lang==='en'?'Invalid submission.':'提交无�
 // Check 2: too fast (< 3 seconds = bot)
 if(now-formOpened<3000){alert(lang==='en'?'Please take your time.':'请稍后再提交。');return;}
 // Check 3: cooldown between submissions (60 seconds)
-if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another inquiry.':'请等待后再发送新询盘。');return;}
+if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another message.':'请等待后再发送新消息。');return;}
 // Check 4: max 5 per session
 if(submitCount>=5){alert(lang==='en'?'Too many submissions. Please email us directly.':'提交次数过多，请直接邮件联系我们。');return;}
 var btn=document.getElementById('submitBtn');

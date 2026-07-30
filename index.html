@@ -770,7 +770,7 @@
             <li><a href="products.html"><span class="en">Products</span><span class="zh">产品</span></a></li>
             <li><a href="factory.html"><span class="en">Factory</span><span class="zh">工厂</span></a></li>
             <li><a href="certifications.html"><span class="en">Certifications</span><span class="zh">资质</span></a></li>
-            <li><a href="contact.html"><span class="en">Inquiry</span><span class="zh">询盘</span></a></li>
+            <li><a href="contact.html"><span class="en">Contact Us</span><span class="zh">联系我们</span></a></li>
             <li><button class="lang-switch" id="langToggle" onclick="toggleLang()">中文</button></li>
         </ul>
         <button class="mobile-toggle" onclick="toggleMenu()">&#9776;</button>
@@ -1009,7 +1009,7 @@
                     </div>
                 </div>
                 <div id="contactLock" style="text-align:center;padding:14px 16px;background:var(--cream);border-radius:10px;margin-top:14px;">
-                    <p style="font-size:13px;color:var(--text-light);margin:0;"><span class="en">Send an inquiry to view email & WhatsApp</span><span class="zh">发送询盘后显示邮箱与 WhatsApp</span></p>
+                    <p style="font-size:13px;color:var(--text-light);margin:0;"><span class="en">Contact us to view email & WhatsApp</span><span class="zh">联系我们后显示邮箱与 WhatsApp</span></p>
                 </div>
                 <div id="contactReveal" style="display:none;">
                     <div class="inquiry-detail">
@@ -1030,8 +1030,8 @@
             </div>
             <div class="inquiry-form">
                 <h3>
-                    <span class="en">Send an Inquiry</span>
-                    <span class="zh">发送询盘</span>
+                    <span class="en">Send a Message</span>
+                    <span class="zh">发送消息</span>
                 </h3>
                 <form id="inquiryForm">
                     <div style="position:absolute;left:-9999px;" aria-hidden="true">
@@ -1106,8 +1106,8 @@
                         <span class="zh"> 您的信息完全保密，不会泄露给第三方。</span>
                     </p>
                     <button type="submit" class="form-submit" id="submitBtn">
-                        <span class="en">Send Inquiry</span>
-                        <span class="zh">发送询盘</span>
+                        <span class="en">Send Message</span>
+                        <span class="zh">发送消息</span>
                     </button>
                 </form>
             </div>
@@ -1148,7 +1148,7 @@
                 <span class="en">Contact</span>
                 <span class="zh">联系</span>
             </h4>
-            <p style="font-size:12px;color:rgba(255,255,255,0.35);"><span class="en">Submit inquiry to view</span><span class="zh">提交询盘后显示</span></p>
+            <p style="font-size:12px;color:rgba(255,255,255,0.35);"><span class="en">Contact us to view</span><span class="zh">联系我们后显示</span></p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -1176,8 +1176,8 @@ var now=Date.now();
 var hp=form.querySelector('[name=website]');
 if(hp&&hp.value.trim()!==''){alert(lang==='en'?'Invalid submission.':'提交无效。');return;}
 if(now-formOpened<3000){alert(lang==='en'?'Please take your time.':'请稍后再提交。');return;}
-if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another inquiry.':'请等待后再发送新询盘。');return;}
-if(submitCount>=5){alert(lang==='en'?'Too many submissions. Please email us directly.':'提交次数过多，请直接邮件联系我们。');return;}
+if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another message.':'请等待后再发送新消息。');return;}
+if(submitCount>=5){alert(lang==='en'?'Too many messages. Please email us directly.':'发送次数过多，请直接邮件联系我们。');return;}
 var btn=document.getElementById('submitBtn');
 var orig=btn.textContent;
 btn.textContent=lang==='en'?'Sending...':'发送中...';
