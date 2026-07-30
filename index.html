@@ -174,13 +174,24 @@
             height: 68px;
         }
         .logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            line-height: 1.2;
+        }
+        .logo-text {
             font-size: 22px;
             font-weight: 600;
             color: var(--dark-brown);
             letter-spacing: 2px;
-            text-decoration: none;
         }
-        .logo span { color: var(--accent); }
+        .logo-text span { color: var(--accent); }
+        .logo-tagline {
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
         .nav-links {
             display: flex;
             align-items: center;
@@ -655,7 +666,8 @@
             /* --- Navigation --- */
             nav { padding: 0 16px; }
             .nav-inner { height: 56px; }
-            .logo { font-size: 18px; }
+            .logo-text { font-size: 18px; }
+            .logo-tagline { font-size: 9px; }
             .nav-links { display: none; }
             .nav-links.open {
                 display: flex;
