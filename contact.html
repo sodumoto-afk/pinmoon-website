@@ -104,13 +104,18 @@
 </footer>
 
 <script>
-let lang=localStorage.getItem('pinmoon_lang')||'en';
+(function(){
+var lang=localStorage.getItem('pinmoon_lang')||'en';
 document.body.className=lang;
-document.getElementById('langToggle').textContent=lang==='en'?'\u4e2d\u6587':'English';
-function toggleLang(){lang=lang==='en'?'zh':'en';localStorage.setItem('pinmoon_lang',lang);document.body.className=lang;document.getElementById('langToggle').textContent=lang==='en'?'\u4e2d\u6587':'English';}
-function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
-document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
-document.getElementById('inquiryForm').addEventListener('submit',function(e){e.preventDefault();alert(lang==='en'?'Thank you! We will respond within 24 hours.':'\u611f\u8c22\uff01\u6211\u4eec\u5c06\u572824\u5c0f\u65f6\u5185\u56de\u590d\u3002');this.reset();});
+var btn=document.getElementById('langToggle');
+if(btn)btn.textContent=lang==='en'?'中文':'English';
+window.toggleLang=function(){lang=lang==='en'?'zh':'en';localStorage.setItem('pinmoon_lang',lang);document.body.className=lang;var b=document.getElementById('langToggle');if(b)b.textContent=lang==='en'?'中文':'English';};
+window.toggleMenu=function(){var m=document.getElementById('navLinks');if(m)m.classList.toggle('open');};
+var links=document.querySelectorAll('.nav-links a');
+for(var i=0;i<links.length;i++)links[i].addEventListener('click',function(){var m=document.getElementById('navLinks');if(m)m.classList.remove('open');});
+var form=document.getElementById('inquiryForm');
+if(form)form.addEventListener('submit',function(e){e.preventDefault();alert(lang==='en'?'Thank you! We will respond within 24 hours.':'感谢！我们将在24小时内回复。');this.reset();});
+})();
 </script>
 </body>
 </html>
