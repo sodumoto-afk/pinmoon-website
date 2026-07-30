@@ -1034,6 +1034,10 @@
                     <span class="zh">发送询盘</span>
                 </h3>
                 <form id="inquiryForm">
+                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                        <label><span class="en">Leave empty</span><span class="zh">请留空</span></label>
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="form-group">
                         <label>
                             <span class="en">Your Name *</span>
@@ -1150,8 +1154,17 @@ window.toggleMenu=function(){var m=document.getElementById('navLinks');if(m)m.cl
 var links=document.querySelectorAll('.nav-links a');
 for(var i=0;i<links.length;i++)links[i].addEventListener('click',function(){var m=document.getElementById('navLinks');if(m)m.classList.remove('open');});
 var form=document.getElementById('inquiryForm');
+var formOpened=Date.now();
+var lastSubmit=parseInt(localStorage.getItem('pinmoon_last_submit')||'0');
+var submitCount=parseInt(localStorage.getItem('pinmoon_submit_count')||'0');
 if(form)form.addEventListener('submit',function(e){
 e.preventDefault();
+var now=Date.now();
+var hp=form.querySelector('[name=website]');
+if(hp&&hp.value.trim()!==''){alert(lang==='en'?'Invalid submission.':'提交无效。');return;}
+if(now-formOpened<3000){alert(lang==='en'?'Please take your time.':'请稍后再提交。');return;}
+if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another inquiry.':'请等待后再发送新询盘。');return;}
+if(submitCount>=5){alert(lang==='en'?'Too many submissions. Please email us directly.':'提交次数过多，请直接邮件联系我们。');return;}
 var btn=document.getElementById('submitBtn');
 var orig=btn.textContent;
 btn.textContent=lang==='en'?'Sending...':'发送中...';
@@ -1170,6 +1183,10 @@ mode:'no-cors',
 headers:{'Content-Type':'application/json'},
 body:JSON.stringify(data)
 }).then(function(){
+lastSubmit=Date.now();
+submitCount++;
+localStorage.setItem('pinmoon_last_submit',lastSubmit);
+localStorage.setItem('pinmoon_submit_count',submitCount);
 alert(lang==='en'?'Thank you! We will respond within 24 hours.':'感谢！我们将在24小时内回复。');
 form.reset();
 var lock=document.getElementById('contactLock');

@@ -53,6 +53,11 @@
             <div class="inquiry-form">
                 <h3><span class="en">Send an Inquiry</span><span class="zh">发送询盘</span></h3>
                  <form id="inquiryForm">
+                    <!-- Honeypot: hidden field, bots auto-fill, humans never see -->
+                    <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                        <label><span class="en">Leave empty</span><span class="zh">请留空</span></label>
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="form-group"><label><span class="en">Your Name *</span><span class="zh">您的姓名 *</span></label><input type="text" name="name" required></div>
                     <div class="form-group"><label><span class="en">Company Name</span><span class="zh">公司名称</span></label><input type="text" name="company"></div>
                     <div class="form-group"><label><span class="en">Email *</span><span class="zh">邮箱 *</span></label><input type="email" name="email" required></div>
@@ -119,8 +124,22 @@ window.toggleMenu=function(){var m=document.getElementById('navLinks');if(m)m.cl
 var links=document.querySelectorAll('.nav-links a');
 for(var i=0;i<links.length;i++)links[i].addEventListener('click',function(){var m=document.getElementById('navLinks');if(m)m.classList.remove('open');});
 var form=document.getElementById('inquiryForm');
+// Anti-bot: track form open time
+var formOpened=Date.now();
+var lastSubmit=parseInt(localStorage.getItem('pinmoon_last_submit')||'0');
+var submitCount=parseInt(localStorage.getItem('pinmoon_submit_count')||'0');
 if(form)form.addEventListener('submit',function(e){
 e.preventDefault();
+var now=Date.now();
+// Check 1: honeypot — hidden field must be empty
+var hp=form.querySelector('[name=website]');
+if(hp&&hp.value.trim()!==''){alert(lang==='en'?'Invalid submission.':'提交无效。');return;}
+// Check 2: too fast (< 3 seconds = bot)
+if(now-formOpened<3000){alert(lang==='en'?'Please take your time.':'请稍后再提交。');return;}
+// Check 3: cooldown between submissions (60 seconds)
+if(now-lastSubmit<60000){alert(lang==='en'?'Please wait before sending another inquiry.':'请等待后再发送新询盘。');return;}
+// Check 4: max 5 per session
+if(submitCount>=5){alert(lang==='en'?'Too many submissions. Please email us directly.':'提交次数过多，请直接邮件联系我们。');return;}
 var btn=document.getElementById('submitBtn');
 var orig=btn.textContent;
 btn.textContent=lang==='en'?'Sending...':'发送中...';
@@ -139,6 +158,10 @@ mode:'no-cors',
 headers:{'Content-Type':'application/json'},
 body:JSON.stringify(data)
 }).then(function(){
+lastSubmit=Date.now();
+submitCount++;
+localStorage.setItem('pinmoon_last_submit',lastSubmit);
+localStorage.setItem('pinmoon_submit_count',submitCount);
 alert(lang==='en'?'Thank you! We will respond within 24 hours.':'感谢！我们将在24小时内回复。');
 form.reset();
 // Reveal contact info
