@@ -1046,6 +1046,14 @@
                         <input type="text" name="name" required>
                     </div>
                     <div class="form-group">
+                        <label style="color:var(--accent);font-weight:600;">
+                            <span class="en">WhatsApp / WeChat</span>
+                            <span class="zh">WhatsApp / 微信</span>
+                            <span style="font-size:11px;font-weight:400;"><span class="en"> (Preferred)</span><span class="zh"> (推荐)</span></span>
+                        </label>
+                        <input type="text" name="whatsapp" placeholder="e.g. +86 138xxxxxxx or WeChat ID">
+                    </div>
+                    <div class="form-group">
                         <label>
                             <span class="en">Company Name</span>
                             <span class="zh">公司名称</span>
@@ -1054,10 +1062,10 @@
                     </div>
                     <div class="form-group">
                         <label>
-                            <span class="en">Email *</span>
-                            <span class="zh">邮箱 *</span>
+                            <span class="en">Email</span>
+                            <span class="zh">邮箱</span>
                         </label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email">
                     </div>
                     <div class="form-group">
                         <label>
@@ -1092,6 +1100,11 @@
                         </label>
                         <textarea name="message" required></textarea>
                     </div>
+                    <p style="font-size:11px;color:var(--text-light);text-align:center;margin:6px 0 10px;">
+                        <span style="display:inline-block;padding:2px 8px;background:var(--cream);border-radius:4px;">&#128274;</span>
+                        <span class="en"> Your information is 100% confidential and will never be shared.</span>
+                        <span class="zh"> 您的信息完全保密，不会泄露给第三方。</span>
+                    </p>
                     <button type="submit" class="form-submit" id="submitBtn">
                         <span class="en">Send Inquiry</span>
                         <span class="zh">发送询盘</span>
@@ -1171,6 +1184,7 @@ btn.textContent=lang==='en'?'Sending...':'发送中...';
 btn.disabled=true;
 var data={
 name:form.querySelector('[name=name]').value,
+whatsapp:form.querySelector('[name=whatsapp]').value,
 company:form.querySelector('[name=company]').value,
 email:form.querySelector('[name=email]').value,
 product:form.querySelector('[name=product]').value,

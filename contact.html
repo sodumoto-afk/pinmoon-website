@@ -53,18 +53,24 @@
             <div class="inquiry-form">
                 <h3><span class="en">Send an Inquiry</span><span class="zh">发送询盘</span></h3>
                  <form id="inquiryForm">
-                    <!-- Honeypot: hidden field, bots auto-fill, humans never see -->
+                    <!-- Honeypot: hidden field -->
                     <div style="position:absolute;left:-9999px;" aria-hidden="true">
                         <label><span class="en">Leave empty</span><span class="zh">请留空</span></label>
                         <input type="text" name="website" tabindex="-1" autocomplete="off">
                     </div>
                     <div class="form-group"><label><span class="en">Your Name *</span><span class="zh">您的姓名 *</span></label><input type="text" name="name" required></div>
+                    <div class="form-group"><label style="color:var(--accent);font-weight:600;"><span class="en">WhatsApp / WeChat</span><span class="zh">WhatsApp / 微信</span> <span style="font-size:11px;font-weight:400;"><span class="en">(Preferred)</span><span class="zh">(推荐)</span></span></label><input type="text" name="whatsapp" placeholder="e.g. +86 138xxxxxxx or WeChat ID"></div>
                     <div class="form-group"><label><span class="en">Company Name</span><span class="zh">公司名称</span></label><input type="text" name="company"></div>
-                    <div class="form-group"><label><span class="en">Email *</span><span class="zh">邮箱 *</span></label><input type="email" name="email" required></div>
+                    <div class="form-group"><label><span class="en">Email</span><span class="zh">邮箱</span></label><input type="email" name="email"></div>
                     <div class="form-group"><label><span class="en">Product Interest</span><span class="zh">感兴趣的产品</span></label>
                         <select name="product"><option value=""><span class="en">-- Select --</span><span class="zh">-- 请选择 --</span></option><option>RP-HP200 (Hotel Pocket)</option><option>BP-BB180 (Bonnell B&B)</option><option>ODM-FA220 (Foldable Apartment)</option><option><span class="en">Custom OEM/ODM</span><span class="zh">定制 OEM/ODM</span></option></select></div>
                     <div class="form-group"><label><span class="en">Estimated Order Quantity</span><span class="zh">预计订单量</span></label><input type="text" name="quantity" placeholder="e.g. 1x40HQ container"></div>
                     <div class="form-group"><label><span class="en">Message *</span><span class="zh">留言 *</span></label><textarea name="message" required></textarea></div>
+                    <p style="font-size:11px;color:var(--text-light);text-align:center;margin:6px 0 10px;">
+                        <span style="display:inline-block;padding:2px 8px;background:var(--cream);border-radius:4px;">&#128274;</span>
+                        <span class="en"> Your information is 100% confidential and will never be shared.</span>
+                        <span class="zh"> 您的信息完全保密，不会泄露给第三方。</span>
+                    </p>
                     <button type="submit" class="form-submit" id="submitBtn"><span class="en">Send Inquiry</span><span class="zh">发送询盘</span></button>
                 </form>
             </div>
@@ -146,6 +152,7 @@ btn.textContent=lang==='en'?'Sending...':'发送中...';
 btn.disabled=true;
 var data={
 name:form.querySelector('[name=name]').value,
+whatsapp:form.querySelector('[name=whatsapp]').value,
 company:form.querySelector('[name=company]').value,
 email:form.querySelector('[name=email]').value,
 product:form.querySelector('[name=product]').value,
