@@ -47,15 +47,15 @@
             </div>
             <div class="inquiry-form">
                 <h3><span class="en">Send an Inquiry</span><span class="zh">发送询盘</span></h3>
-                <form id="inquiryForm">
-                    <div class="form-group"><label><span class="en">Your Name *</span><span class="zh">您的姓名 *</span></label><input type="text" required></div>
-                    <div class="form-group"><label><span class="en">Company Name</span><span class="zh">公司名称</span></label><input type="text"></div>
-                    <div class="form-group"><label><span class="en">Email *</span><span class="zh">邮箱 *</span></label><input type="email" required></div>
+                 <form id="inquiryForm">
+                    <div class="form-group"><label><span class="en">Your Name *</span><span class="zh">您的姓名 *</span></label><input type="text" name="name" required></div>
+                    <div class="form-group"><label><span class="en">Company Name</span><span class="zh">公司名称</span></label><input type="text" name="company"></div>
+                    <div class="form-group"><label><span class="en">Email *</span><span class="zh">邮箱 *</span></label><input type="email" name="email" required></div>
                     <div class="form-group"><label><span class="en">Product Interest</span><span class="zh">感兴趣的产品</span></label>
-                        <select><option value=""><span class="en">-- Select --</span><span class="zh">-- 请选择 --</span></option><option>RP-HP200 (Hotel Pocket)</option><option>BP-BB180 (Bonnell B&B)</option><option>ODM-FA220 (Foldable Apartment)</option><option><span class="en">Custom OEM/ODM</span><span class="zh">定制 OEM/ODM</span></option></select></div>
-                    <div class="form-group"><label><span class="en">Estimated Order Quantity</span><span class="zh">预计订单量</span></label><input type="text" placeholder="e.g. 1x40HQ container"></div>
-                    <div class="form-group"><label><span class="en">Message *</span><span class="zh">留言 *</span></label><textarea required></textarea></div>
-                    <button type="submit" class="form-submit"><span class="en">Send Inquiry</span><span class="zh">发送询盘</span></button>
+                        <select name="product"><option value=""><span class="en">-- Select --</span><span class="zh">-- 请选择 --</span></option><option>RP-HP200 (Hotel Pocket)</option><option>BP-BB180 (Bonnell B&B)</option><option>ODM-FA220 (Foldable Apartment)</option><option><span class="en">Custom OEM/ODM</span><span class="zh">定制 OEM/ODM</span></option></select></div>
+                    <div class="form-group"><label><span class="en">Estimated Order Quantity</span><span class="zh">预计订单量</span></label><input type="text" name="quantity" placeholder="e.g. 1x40HQ container"></div>
+                    <div class="form-group"><label><span class="en">Message *</span><span class="zh">留言 *</span></label><textarea name="message" required></textarea></div>
+                    <button type="submit" class="form-submit" id="submitBtn"><span class="en">Send Inquiry</span><span class="zh">发送询盘</span></button>
                 </form>
             </div>
         </div>
@@ -115,7 +115,35 @@ window.toggleMenu=function(){var m=document.getElementById('navLinks');if(m)m.cl
 var links=document.querySelectorAll('.nav-links a');
 for(var i=0;i<links.length;i++)links[i].addEventListener('click',function(){var m=document.getElementById('navLinks');if(m)m.classList.remove('open');});
 var form=document.getElementById('inquiryForm');
-if(form)form.addEventListener('submit',function(e){e.preventDefault();alert(lang==='en'?'Thank you! We will respond within 24 hours.':'感谢！我们将在24小时内回复。');this.reset();});
+if(form)form.addEventListener('submit',function(e){
+e.preventDefault();
+var btn=document.getElementById('submitBtn');
+var orig=btn.textContent;
+btn.textContent=lang==='en'?'Sending...':'发送中...';
+btn.disabled=true;
+var data={
+name:form.querySelector('[name=name]').value,
+company:form.querySelector('[name=company]').value,
+email:form.querySelector('[name=email]').value,
+product:form.querySelector('[name=product]').value,
+quantity:form.querySelector('[name=quantity]').value,
+message:form.querySelector('[name=message]').value
+};
+fetch('https://script.google.com/macros/s/AKfycbxJ_AJkGs_tuiQ85NWzCa55wX3G4B89NXhSiup-O_b3mk9lzPVpGb7l2utS2ak6qwOfww/exec',{
+method:'POST',
+mode:'no-cors',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify(data)
+}).then(function(){
+alert(lang==='en'?'Thank you! We will respond within 24 hours.':'感谢！我们将在24小时内回复。');
+form.reset();
+}).catch(function(){
+alert(lang==='en'?'Sorry, something went wrong. Please email us directly.':'抱歉，发送失败，请直接邮件联系我们。');
+}).finally(function(){
+btn.textContent=orig;
+btn.disabled=false;
+});
+});
 })();
 </script>
 </body>
