@@ -1057,7 +1057,7 @@
                     <span class="en">Send a Message</span>
                     <span class="zh">发送消息</span>
                 </h3>
-                <form id="inquiryForm">
+                <form id="inquiryForm" autocomplete="off">
                     <div style="position:absolute;left:-9999px;" aria-hidden="true">
                         <label><span class="en">Leave empty</span><span class="zh">请留空</span></label>
                         <input type="text" name="website" tabindex="-1" autocomplete="off">
@@ -1067,7 +1067,7 @@
                             <span class="en">Your Name *</span>
                             <span class="zh">您的姓名 *</span>
                         </label>
-                        <input type="text" name="name" required>
+                        <input type="text" name="name" required autocomplete="off" data-lpignore="true">
                     </div>
                     <div class="form-group">
                         <label style="color:var(--accent);font-weight:600;">
@@ -1075,39 +1075,29 @@
                             <span class="zh">WhatsApp / 微信</span>
                             <span style="font-size:11px;font-weight:400;"><span class="en"> (Preferred)</span><span class="zh"> (推荐)</span></span>
                         </label>
-                        <input type="text" name="whatsapp" placeholder="e.g. +86 138xxxxxxx or WeChat ID">
+                        <input type="text" name="whatsapp" placeholder="e.g. +86 138xxxxxxx or WeChat ID" autocomplete="off" data-lpignore="true">
                     </div>
                     <div class="form-group">
                         <label>
                             <span class="en">Company Name</span>
                             <span class="zh">公司名称</span>
                         </label>
-                        <input type="text" name="company">
-                    </div>
-                     <div class="form-group">
-                        <label>
-                            <span class="en">Email</span>
-                            <span class="zh">邮箱</span>
-                        </label>
-                        <input type="email" name="email" placeholder="sodumoto@gmail.com">
+                        <input type="text" name="company" autocomplete="off" data-lpignore="true">
                     </div>
                     <div class="form-group">
                         <label>
-                            <span class="en">WhatsApp / Phone</span>
-                            <span class="zh">WhatsApp / 电话</span>
+                            <span class="en">Email</span>
+                            <span class="zh">邮箱</span>
+                            <span style="font-size:11px;color:var(--text-light);"><span class="en"> (Required if no WhatsApp)</span><span class="zh"> (无微信/WhatsApp则必填)</span></span>
                         </label>
-                        <input type="text" name="whatsapp" placeholder="+86 13088813138">
+                        <input type="text" name="email" autocomplete="off" data-lpignore="true">
                     </div>
-                    <p style="font-size:10px;color:var(--accent);text-align:center;margin:-8px 0 12px;">
-                        <span class="en">&#9888; At least one required: Email or WhatsApp/Phone</span>
-                        <span class="zh">&#9888; 邮箱和 WhatsApp/电话至少填一个</span>
-                    </p>
                     <div class="form-group">
                         <label>
                             <span class="en">Product Interest</span>
                             <span class="zh">感兴趣的产品</span>
                         </label>
-                        <select name="product">
+                        <select name="product" autocomplete="off">
                             <option value="">
                                 <span class="en">— Select —</span>
                                 <span class="zh">— 请选择 —</span>
@@ -1126,14 +1116,14 @@
                             <span class="en">Estimated Order Quantity</span>
                             <span class="zh">预计订单量</span>
                         </label>
-                        <input type="text" name="quantity" placeholder="e.g. 1×40HQ container">
+                        <input type="text" name="quantity" placeholder="e.g. 1×40HQ container" autocomplete="off" data-lpignore="true">
                     </div>
                     <div class="form-group">
                         <label>
                             <span class="en">Message *</span>
                             <span class="zh">留言 *</span>
                         </label>
-                        <textarea name="message" required></textarea>
+                        <textarea name="message" required autocomplete="off" data-lpignore="true"></textarea>
                     </div>
                     <p style="font-size:11px;color:var(--text-light);text-align:center;margin:6px 0 10px;">
                         <span style="display:inline-block;padding:2px 8px;background:var(--cream);border-radius:4px;">&#128274;</span>
